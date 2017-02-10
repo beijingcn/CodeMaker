@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeMakerConfiguration.java, v 0.1 2017-02-01 ÉÏÎç11:32 hansong.xhs Exp $$
+ * @version $Id: CodeMakerConfiguration.java, v 0.1 2017-02-01
  */
 public class CodeMakerConfiguration {
     private JPanel                        mainPane;
@@ -55,7 +55,7 @@ public class CodeMakerConfiguration {
         Map<String, CodeTemplate> map = new HashMap<>();
         editPaneMap.forEach((key, value) -> {
             CodeTemplate codeTemplate = new CodeTemplate(value.getTemplateName(), value
-                .getClassName(), value.getTemplate(), value.getClassNumber());
+                .getClassName(), value.getTemplate(), value.getClassNumber(),value.getSourcePath());
             map.put(codeTemplate.getName(), codeTemplate);
         });
         return map;

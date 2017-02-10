@@ -5,10 +5,11 @@ import org.apache.velocity.app.VelocityEngine;
 
 import java.io.StringWriter;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author hansong.xhs
- * @version $Id: VelocityUtil.java, v 0.1 2017-01-22 œ¬ŒÁ8:49 hansong.xhs Exp $$
+ * @version $Id: VelocityUtil.java, v 0.1 2017-01-22 ‰∏ãÂçà8:49 hansong.xhs Exp $$
  */
 public class VelocityUtil {
 
@@ -16,7 +17,12 @@ public class VelocityUtil {
 
     static {
         velocityEngine = new VelocityEngine();
-        velocityEngine.init();
+        Properties props = new Properties();
+        props.put("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.SimpleLog4JLogSystem");
+        props.put("runtime.log.logsystem.log4j.category", "velocity");
+        props.put("runtime.log.logsystem.log4j.logger", "velocity");
+
+        velocityEngine.init(props);
     }
 
     public static String evaluate(String template, Map<String, Object> map) {

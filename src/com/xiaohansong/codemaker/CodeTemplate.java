@@ -4,7 +4,7 @@ import com.intellij.openapi.util.text.StringUtil;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeTemplate.java, v 0.1 2017-01-28 ÏÂÎç9:41 hansong.xhs Exp $$
+ * @version $Id: CodeTemplate.java, v 0.1 2017-01-28
  */
 public class CodeTemplate {
 
@@ -28,14 +28,17 @@ public class CodeTemplate {
      */
     private int    classNumber;
 
+    private String sourcePath;
+
     public CodeTemplate() {
     }
 
-    public CodeTemplate(String name, String classNameVm, String codeTemplate, int classNumber) {
+    public CodeTemplate(String name, String classNameVm, String codeTemplate, int classNumber,String sourcePath) {
         this.name = name;
         this.classNameVm = classNameVm;
         this.codeTemplate = codeTemplate;
         this.classNumber = classNumber;
+        this.sourcePath = sourcePath;
     }
 
     public boolean isValid() {
@@ -58,6 +61,9 @@ public class CodeTemplate {
             return false;
         if (classNameVm != null ? !classNameVm.equals(that.classNameVm) : that.classNameVm != null)
             return false;
+        if(sourcePath != null ? !sourcePath.equals(that.sourcePath) : that.sourcePath != null )
+            return  false;
+
         return codeTemplate != null ? codeTemplate.equals(that.codeTemplate)
             : that.codeTemplate == null;
     }
@@ -67,11 +73,12 @@ public class CodeTemplate {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (classNameVm != null ? classNameVm.hashCode() : 0);
         result = 31 * result + (codeTemplate != null ? codeTemplate.hashCode() : 0);
+        result = 31 * result + (sourcePath != null ? sourcePath.hashCode() : 0);
         result = 31 * result + classNumber;
         return result;
     }
 
-    public static final CodeTemplate EMPTY_TEMPLATE = new CodeTemplate("", "", "", 1);
+    public static final CodeTemplate EMPTY_TEMPLATE = new CodeTemplate("", "", "", 1,"");
 
     /**
      * Getter method for property <tt>name</tt>.
@@ -143,5 +150,13 @@ public class CodeTemplate {
      */
     public void setClassNameVm(String classNameVm) {
         this.classNameVm = classNameVm;
+    }
+
+    public String getSourcePath() {
+        return sourcePath;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
     }
 }

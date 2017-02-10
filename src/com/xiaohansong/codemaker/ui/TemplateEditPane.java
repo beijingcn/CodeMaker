@@ -15,7 +15,7 @@ import java.awt.*;
 
 /**
  * @author hansong.xhs
- * @version $Id: TemplateEditPane.java, v 0.1 2017-01-31 ÏÂÎç9:06 hansong.xhs Exp $$
+ * @version $Id: TemplateEditPane.java, v 0.1 2017-01-31
  */
 public class TemplateEditPane {
 
@@ -25,6 +25,7 @@ public class TemplateEditPane {
     private JTextField classNameText;
     private JButton    deleteTemplateButton;
     private JPanel     editorPane;
+    private JTextField sourcePathText;
     private Editor     editor;
 
     public TemplateEditPane(CodeMakerSettings settings, String template,
@@ -37,6 +38,8 @@ public class TemplateEditPane {
         templateNameText.setText(codeTemplate.getName());
         classNumberText.setText(String.valueOf(codeTemplate.getClassNumber()));
         classNameText.setText(codeTemplate.getClassNameVm());
+        sourcePathText.setText(codeTemplate.getSourcePath());
+
         addVmEditor(codeTemplate.getCodeTemplate());
         deleteTemplateButton.addActionListener(e -> {
             int result = Messages.showYesNoDialog("Delete this template?", "Delete", null);
@@ -77,6 +80,10 @@ public class TemplateEditPane {
 
     public String getTemplate() {
         return editor.getDocument().getText();
+    }
+
+    public String getSourcePath (){
+        return  sourcePathText.getText();
     }
 
     /**

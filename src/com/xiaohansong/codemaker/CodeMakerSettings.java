@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeMakerSettings.java, v 0.1 2017-01-28 œ¬ŒÁ9:30 hansong.xhs Exp $$
+ * @version $Id: CodeMakerSettings.java, v 0.1 2017-01-28 ‰∏ãÂçà9:30 hansong.xhs Exp $$
  */
 @State(name = "CodeMakerSettings", storages = { @Storage(id = "app-default", file = "$APP_CONFIG$/CodeMaker-settings.xml") })
 public class CodeMakerSettings implements PersistentStateComponent<CodeMakerSettings> {
@@ -158,10 +158,10 @@ public class CodeMakerSettings implements PersistentStateComponent<CodeMakerSett
     public void loadDefaultSettings() {
         Map<String, CodeTemplate> codeTemplates = new HashMap<>();
         codeTemplates.put("Converter", new CodeTemplate("Converter",
-            "${class0.className}Converter", CONVERTER, 2));
+            "${class0.className}Converter", CONVERTER, 2,""));
         codeTemplates.put("Model", new CodeTemplate("Model",
             "#set($end = ${class0.className.length()} - 2)${class0.className.substring(0,${end})}",
-            MODEL, 1));
+            MODEL, 1,""));
         this.codeTemplates = codeTemplates;
     }
 

@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeMakerConfigurable.java, v 0.1 2017-01-31 ÏÂÎç9:09 hansong.xhs Exp $$
+ * @version $Id: CodeMakerConfigurable.java, v 0.1 2017-01-31 ä¸‹åˆ9:09 hansong.xhs Exp $$
  */
 public class CodeMakerConfigurable implements SearchableConfigurable {
 

@@ -6,7 +6,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 
 /**
  * @author hansong.xhs
- * @version \$Id: com.xiaohansong.codemaker.CodeMaker.java, v 0.1 2017-01-19 ÏÂÎç10:18 hansong.xhs Exp $$
+ * @version \$Id: com.xiaohansong.codemaker.CodeMaker.java, v 0.1 2017-01-19 ä¸‹åˆ10:18 hansong.xhs Exp $$
  */
 public class CodeMaker implements ApplicationComponent {
     public CodeMaker() {

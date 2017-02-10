@@ -25,7 +25,7 @@ import java.util.Map;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeMakerAction.java, v 0.1 2017-01-28 ÏÂÎç9:23 hansong.xhs Exp $$
+ * @version $Id: CodeMakerAction.java, v 0.1 2017-01-28
  */
 public class CodeMakerAction extends AnAction {
     private CodeMakerSettings settings;
@@ -76,9 +76,13 @@ public class CodeMakerAction extends AnAction {
 
             String content = VelocityUtil.evaluate(codeTemplate.getCodeTemplate(), map);
             // async write action
+
+            String sourcePath = codeTemplate.getSourcePath();
+            if(sourcePath==null || sourcePath.trim().length()==0)
+                sourcePath = CodeMakerUtil.getSourcePath(currentClass);
+
             ApplicationManager.getApplication().runWriteAction(
-                new CreateFileAction(CodeMakerUtil.generateClassPath(
-                    CodeMakerUtil.getSourcePath(currentClass), className), content, anActionEvent
+                new CreateFileAction(CodeMakerUtil.generateClassPath(sourcePath, className), content, anActionEvent
                     .getDataContext()));
 
         } catch (Exception e) {

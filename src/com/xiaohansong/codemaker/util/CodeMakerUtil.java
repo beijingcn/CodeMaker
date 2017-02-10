@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author hansong.xhs
- * @version $Id: CodeMakerUtil.java, v 0.1 2017-01-20 ÏÂÎç10:15 hansong.xhs Exp $$
+ * @version $Id: CodeMakerUtil.java, v 0.1 2017-01-20 ä¸‹åˆ10:15 hansong.xhs Exp $$
  */
 public class CodeMakerUtil {
 
