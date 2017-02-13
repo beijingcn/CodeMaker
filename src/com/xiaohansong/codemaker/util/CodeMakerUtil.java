@@ -45,6 +45,13 @@ public class CodeMakerUtil {
         return sourcePath + "/" + className + ".java";
     }
 
+    public static String generateOutFile(String sourcePath,String fileName,String suffix){
+        if(!suffix.startsWith(".")){
+            suffix +=".";
+        }
+        return sourcePath+"/"+fileName+suffix;
+    }
+
     /**
      * Gets the javafile that's currently selected in the editor. Returns null if it's not a java file.
      *

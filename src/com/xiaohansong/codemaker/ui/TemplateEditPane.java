@@ -26,6 +26,8 @@ public class TemplateEditPane {
     private JButton    deleteTemplateButton;
     private JPanel     editorPane;
     private JTextField sourcePathText;
+    private JTextField fileNameText;
+    private JTextField suffixText;
     private Editor     editor;
 
     public TemplateEditPane(CodeMakerSettings settings, String template,
@@ -39,6 +41,8 @@ public class TemplateEditPane {
         classNumberText.setText(String.valueOf(codeTemplate.getClassNumber()));
         classNameText.setText(codeTemplate.getClassNameVm());
         sourcePathText.setText(codeTemplate.getSourcePath());
+        fileNameText.setText(codeTemplate.getFileName());
+        suffixText.setText(codeTemplate.getSuffix());
 
         addVmEditor(codeTemplate.getCodeTemplate());
         deleteTemplateButton.addActionListener(e -> {
@@ -84,6 +88,14 @@ public class TemplateEditPane {
 
     public String getSourcePath (){
         return  sourcePathText.getText();
+    }
+
+    public String getFileName(){
+        return  fileNameText.getText();
+    }
+
+    public String getSuffix(){
+        return suffixText.getText();
     }
 
     /**

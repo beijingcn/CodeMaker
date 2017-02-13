@@ -30,15 +30,22 @@ public class CodeTemplate {
 
     private String sourcePath;
 
+    private String fileName;
+
+    private String suffix;
+
+
     public CodeTemplate() {
     }
 
-    public CodeTemplate(String name, String classNameVm, String codeTemplate, int classNumber,String sourcePath) {
+    public CodeTemplate(String name, String classNameVm, String codeTemplate, int classNumber,String sourcePath,String fileName,String suffix) {
         this.name = name;
         this.classNameVm = classNameVm;
         this.codeTemplate = codeTemplate;
         this.classNumber = classNumber;
         this.sourcePath = sourcePath;
+        this.fileName = fileName;
+        this.suffix = suffix;
     }
 
     public boolean isValid() {
@@ -62,7 +69,11 @@ public class CodeTemplate {
         if (classNameVm != null ? !classNameVm.equals(that.classNameVm) : that.classNameVm != null)
             return false;
         if(sourcePath != null ? !sourcePath.equals(that.sourcePath) : that.sourcePath != null )
-            return  false;
+            return false;
+        if(fileName != null ? !fileName.equals(that.fileName) : that.fileName != null)
+            return false;
+        if(suffix != null ? !suffix.equals(that.suffix) : that.suffix != null)
+            return false;
 
         return codeTemplate != null ? codeTemplate.equals(that.codeTemplate)
             : that.codeTemplate == null;
@@ -74,11 +85,13 @@ public class CodeTemplate {
         result = 31 * result + (classNameVm != null ? classNameVm.hashCode() : 0);
         result = 31 * result + (codeTemplate != null ? codeTemplate.hashCode() : 0);
         result = 31 * result + (sourcePath != null ? sourcePath.hashCode() : 0);
+        result = 31 * result + (fileName != null ? fileName.hashCode():0);
+        result = 31 * result + (suffix != null ? suffix.hashCode(): 0);
         result = 31 * result + classNumber;
         return result;
     }
 
-    public static final CodeTemplate EMPTY_TEMPLATE = new CodeTemplate("", "", "", 1,"");
+    public static final CodeTemplate EMPTY_TEMPLATE = new CodeTemplate("", "", "", 1,"","","");
 
     /**
      * Getter method for property <tt>name</tt>.
@@ -158,5 +171,21 @@ public class CodeTemplate {
 
     public void setSourcePath(String sourcePath) {
         this.sourcePath = sourcePath;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
     }
 }

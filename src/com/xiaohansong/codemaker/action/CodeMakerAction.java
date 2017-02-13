@@ -77,12 +77,26 @@ public class CodeMakerAction extends AnAction {
             String content = VelocityUtil.evaluate(codeTemplate.getCodeTemplate(), map);
             // async write action
 
-            String sourcePath = codeTemplate.getSourcePath();
-            if(sourcePath==null || sourcePath.trim().length()==0)
+            String sourcePath ;
+            if(codeTemplate.getSourcePath()==null || codeTemplate.getSourcePath().trim().length()==0)
                 sourcePath = CodeMakerUtil.getSourcePath(currentClass);
+            else
+                sourcePath = VelocityUtil.evaluate(codeTemplate.getSourcePath(), map);
+
+            String fileName;
+            if(codeTemplate.getFileName()==null||codeTemplate.getFileName().trim().length()==0)
+                fileName = className;
+            else
+                fileName = VelocityUtil.evaluate(codeTemplate.getFileName(), map);
+
+            if(codeTemplate.getSuffix()==null||codeTemplate.getSuffix().trim().length()==0)
+                codeTemplate.setSuffix(".java");
+
+            String outFile =CodeMakerUtil.generateOutFile(sourcePath,fileName,codeTemplate.getSuffix());
+            //CodeMakerUtil.generateClassPath(sourcePath, className);
 
             ApplicationManager.getApplication().runWriteAction(
-                new CreateFileAction(CodeMakerUtil.generateClassPath(sourcePath, className), content, anActionEvent
+                new CreateFileAction(outFile, content, anActionEvent
                     .getDataContext()));
 
         } catch (Exception e) {

@@ -17,6 +17,7 @@ import java.util.Map;
 public class CodeMakerConfiguration {
     private JPanel                        mainPane;
     private JButton                       addTemplateButton;
+    private JPanel tabPane;
     private JBTabbedPane                  tabbedPane;
     private Map<String, TemplateEditPane> editPaneMap;
 
@@ -34,7 +35,7 @@ public class CodeMakerConfiguration {
         GridConstraints constraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST,
             GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
             GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(300, 300), null, 0, true);
-        mainPane.add(tabbedPane, constraints);
+        tabPane.add(tabbedPane, constraints);
     }
 
     public void refresh(CodeMakerSettings settings) {
@@ -55,7 +56,7 @@ public class CodeMakerConfiguration {
         Map<String, CodeTemplate> map = new HashMap<>();
         editPaneMap.forEach((key, value) -> {
             CodeTemplate codeTemplate = new CodeTemplate(value.getTemplateName(), value
-                .getClassName(), value.getTemplate(), value.getClassNumber(),value.getSourcePath());
+                .getClassName(), value.getTemplate(), value.getClassNumber(),value.getSourcePath(),value.getFileName(),value.getSuffix());
             map.put(codeTemplate.getName(), codeTemplate);
         });
         return map;

@@ -158,10 +158,10 @@ public class CodeMakerSettings implements PersistentStateComponent<CodeMakerSett
     public void loadDefaultSettings() {
         Map<String, CodeTemplate> codeTemplates = new HashMap<>();
         codeTemplates.put("Converter", new CodeTemplate("Converter",
-            "${class0.className}Converter", CONVERTER, 2,""));
+            "${class0.className}Converter", CONVERTER, 2,"","",""));
         codeTemplates.put("Model", new CodeTemplate("Model",
             "#set($end = ${class0.className.length()} - 2)${class0.className.substring(0,${end})}",
-            MODEL, 1,""));
+            MODEL, 1,"","",""));
         this.codeTemplates = codeTemplates;
     }
 
